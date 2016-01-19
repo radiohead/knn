@@ -1,0 +1,1 @@
+require 'knn/regressions/average'
