@@ -1,18 +1,20 @@
 PATH
   remote: .
   specs:
-    knn (0.1.0)
+    knn (0.2.0)
       descriptive_statistics (~> 2.5)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (8.0.1)
     descriptive_statistics (2.5.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   knn!
 
 BUNDLED WITH

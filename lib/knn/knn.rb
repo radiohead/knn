@@ -11,7 +11,7 @@ class KNN
 
   def find_nearest(pivot, neighbors_count)
     data_with_distances = data.map do |data_point|
-      [send("#{distance}_distance", data_point, pivot), data_point]
+      [euclidean_distance(data_point, pivot), data_point]
     end
 
     data_with_distances.sort! do |left, right|
@@ -21,10 +21,14 @@ class KNN
     data_with_distances[0...neighbors_count]
   end
 
-private
+  private
+
   def euclidean_distance(left = [], right = [])
-    indices = (0...left.size).to_a - [unknown_index]
-    sum = indices.reduce(0){ |acc, i| acc + (left[i] - right[i]) ** 2 }
+    sum = 0
+    left.each_with_index do |left_v, idx|
+      next if idx == unknown_index
+      sum += (left_v - right[idx])**2
+    end
 
     Math.sqrt(sum)
   end
