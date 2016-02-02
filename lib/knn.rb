@@ -1,4 +1,5 @@
 require 'knn/classifications'
+require 'knn/normalizations'
 require 'knn/regressions'
 require 'knn/validations'
 require 'knn/knn'

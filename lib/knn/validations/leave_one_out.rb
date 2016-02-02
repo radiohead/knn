@@ -7,7 +7,7 @@ module Validations
 
     def lookup
       errors = data.map do |row|
-        nearest = KNN.new(data - [row], target_index).find_nearest(row, number_of_neighbors)
+        nearest = KNN::KNN.new(data - [row], target_index).find_nearest(row, number_of_neighbors)
         predicted = yield(nearest)
 
         (row.at(target_index) - predicted).abs

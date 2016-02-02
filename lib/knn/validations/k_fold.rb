@@ -1,5 +1,3 @@
-require 'byebug'
-
 require 'knn/validations/base'
 require 'descriptive_statistics'
 
@@ -23,7 +21,7 @@ module Validations
         training_data = data - slice
 
         predicted = slice.map do |row|
-          nearest = KNN.new(training_data, target_index).find_nearest(row, number_of_neighbors)
+          nearest = KNN::KNN.new(training_data, target_index).find_nearest(row, number_of_neighbors)
           yield(nearest)
         end
 
