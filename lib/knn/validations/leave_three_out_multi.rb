@@ -12,7 +12,7 @@ module Validations
 
         data.each_slice(3) do |rows|
           rows.each do |row|
-            nearest = KNN::KNN.new(data - [rows], index).find_nearest(row, number_of_neighbors)
+            nearest = KNN::KNNMulti.new(data - rows, target_index).find_nearest(row, number_of_neighbors)
 
             predictions << yield(nearest, index)
             actuals << row[index]

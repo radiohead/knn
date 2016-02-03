@@ -1,8 +1,6 @@
 require 'knn/validations/base'
 require 'descriptive_statistics'
 
-require 'byebug'
-
 module Validations
   class LeaveOneOutMulti < Base
     def regression(regression_class = Regressions::Average)
@@ -19,7 +17,7 @@ module Validations
         actuals = []
 
         data.each do |row|
-          nearest = KNN::KNN.new(data - [row], index).find_nearest(row, number_of_neighbors)
+          nearest = KNN::KNNMulti.new(data - [row], target_index).find_nearest(row, number_of_neighbors)
 
           predictions << yield(nearest, index)
           actuals << row[index]
